@@ -23,5 +23,27 @@ namespace Medical_Insurance_Company
         {
             InitializeComponent();
         }
+
+        private void Authorization_Bt_Click(object sender, RoutedEventArgs e)
+        {
+            if(LoginBox.Text.Length > 0) 
+            {
+                if(PasswordBox.Password.Length > 0)
+                {
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Введите верный логин!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите верный логин!");
+            }
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
     }
 }

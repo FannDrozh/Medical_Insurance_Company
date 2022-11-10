@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MIC_BarashenkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+          </Key>
+          <Property Name="ID_Person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Role" Type="int" />
+        </EntityType>
+        <EntityType Name="Documentation_Insurance_Cases">
+          <Key>
+            <PropertyRef Name="ID_Documentation" />
+          </Key>
+          <Property Name="ID_Documentation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_Insuranse_Case" Type="datetime" />
+          <Property Name="ID_Person" Type="int" />
+          <Property Name="ID_Insuranse_Case" Type="int" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="ID_Medical_Institution" Type="int" />
+        </EntityType>
+        <EntityType Name="Insurance_Cases">
+          <Key>
+            <PropertyRef Name="ID_Insurance_Case" />
+          </Key>
+          <Property Name="ID_Insurance_Case" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Insurance_Case" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Medical_Institutions">
+          <Key>
+            <PropertyRef Name="ID_Contract_Medical_Institution" />
+          </Key>
+          <Property Name="ID_Contract_Medical_Institution" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Med_Ins" Type="varchar(max)" />
+          <Property Name="ID_Medical_Services" Type="int" />
+          <Property Name="Contract_Period" Type="varchar(max)" />
+          <Property Name="Date_of_Signing" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medical_Services">
+          <Key>
+            <PropertyRef Name="ID_Medical_Services" />
+          </Key>
+          <Property Name="ID_Medical_Services" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_Of_Services" Type="varchar(max)" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="ID_Contract_Person" />
+          </Key>
+          <Property Name="ID_Contract_Person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Middle_Name" Type="varchar(max)" />
+          <Property Name="Birthdate" Type="date" Nullable="false" />
+          <Property Name="Passport_Series_Number" Type="varchar(max)" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Contract_Period" Type="varchar(max)" />
+          <Property Name="Date_of_Signing" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role_Users">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Authorization_Role_Users">
+          <End Role="Role_Users" Type="Self.Role_Users" Multiplicity="0..1" />
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_Users">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Authorization">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documentation_Insurance_Cases_Insurance_Cases">
+          <End Role="Insurance_Cases" Type="Self.Insurance_Cases" Multiplicity="0..1" />
+          <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance_Cases">
+              <PropertyRef Name="ID_Insurance_Case" />
+            </Principal>
+            <Dependent Role="Documentation_Insurance_Cases">
+              <PropertyRef Name="ID_Insuranse_Case" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documentation_Insurance_Cases_Medical_Institutions">
+          <End Role="Medical_Institutions" Type="Self.Medical_Institutions" Multiplicity="0..1" />
+          <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Institutions">
+              <PropertyRef Name="ID_Contract_Medical_Institution" />
+            </Principal>
+            <Dependent Role="Documentation_Insurance_Cases">
+              <PropertyRef Name="ID_Medical_Institution" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documentation_Insurance_Cases_Persons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID_Contract_Person" />
+            </Principal>
+            <Dependent Role="Documentation_Insurance_Cases">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Institutions_Medical_Services">
+          <End Role="Medical_Services" Type="Self.Medical_Services" Multiplicity="0..1" />
+          <End Role="Medical_Institutions" Type="Self.Medical_Institutions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Services">
+              <PropertyRef Name="ID_Medical_Services" />
+            </Principal>
+            <Dependent Role="Medical_Institutions">
+              <PropertyRef Name="ID_Medical_Services" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MIC_BarashenkovModelContainer">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documentation_Insurance_Cases" EntityType="Self.Documentation_Insurance_Cases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance_Cases" EntityType="Self.Insurance_Cases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medical_Institutions" EntityType="Self.Medical_Institutions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medical_Services" EntityType="Self.Medical_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role_Users" EntityType="Self.Role_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Authorization_Role_Users" Association="Self.FK_Authorization_Role_Users">
+            <End Role="Role_Users" EntitySet="Role_Users" />
+            <End Role="Authorization" EntitySet="Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documentation_Insurance_Cases_Insurance_Cases" Association="Self.FK_Documentation_Insurance_Cases_Insurance_Cases">
+            <End Role="Insurance_Cases" EntitySet="Insurance_Cases" />
+            <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documentation_Insurance_Cases_Medical_Institutions" Association="Self.FK_Documentation_Insurance_Cases_Medical_Institutions">
+            <End Role="Medical_Institutions" EntitySet="Medical_Institutions" />
+            <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documentation_Insurance_Cases_Persons" Association="Self.FK_Documentation_Insurance_Cases_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Institutions_Medical_Services" Association="Self.FK_Medical_Institutions_Medical_Services">
+            <End Role="Medical_Services" EntitySet="Medical_Services" />
+            <End Role="Medical_Institutions" EntitySet="Medical_Institutions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MIC_BarashenkovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+          </Key>
+          <Property Name="ID_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Role" Type="Int32" />
+          <NavigationProperty Name="Role_Users" Relationship="Self.FK_Authorization_Role_Users" FromRole="Authorization" ToRole="Role_Users" />
+        </EntityType>
+        <EntityType Name="Documentation_Insurance_Cases">
+          <Key>
+            <PropertyRef Name="ID_Documentation" />
+          </Key>
+          <Property Name="ID_Documentation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_Insuranse_Case" Type="DateTime" Precision="3" />
+          <Property Name="ID_Person" Type="Int32" />
+          <Property Name="ID_Insuranse_Case" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Medical_Institution" Type="Int32" />
+          <NavigationProperty Name="Insurance_Cases" Relationship="Self.FK_Documentation_Insurance_Cases_Insurance_Cases" FromRole="Documentation_Insurance_Cases" ToRole="Insurance_Cases" />
+          <NavigationProperty Name="Medical_Institutions" Relationship="Self.FK_Documentation_Insurance_Cases_Medical_Institutions" FromRole="Documentation_Insurance_Cases" ToRole="Medical_Institutions" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Documentation_Insurance_Cases_Persons" FromRole="Documentation_Insurance_Cases" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="Insurance_Cases">
+          <Key>
+            <PropertyRef Name="ID_Insurance_Case" />
+          </Key>
+          <Property Name="ID_Insurance_Case" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Insurance_Case" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Documentation_Insurance_Cases" Relationship="Self.FK_Documentation_Insurance_Cases_Insurance_Cases" FromRole="Insurance_Cases" ToRole="Documentation_Insurance_Cases" />
+        </EntityType>
+        <EntityType Name="Medical_Institutions">
+          <Key>
+            <PropertyRef Name="ID_Contract_Medical_Institution" />
+          </Key>
+          <Property Name="ID_Contract_Medical_Institution" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Med_Ins" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Medical_Services" Type="Int32" />
+          <Property Name="Contract_Period" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Signing" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Documentation_Insurance_Cases" Relationship="Self.FK_Documentation_Insurance_Cases_Medical_Institutions" FromRole="Medical_Institutions" ToRole="Documentation_Insurance_Cases" />
+          <NavigationProperty Name="Medical_Services" Relationship="Self.FK_Medical_Institutions_Medical_Services" FromRole="Medical_Institutions" ToRole="Medical_Services" />
+        </EntityType>
+        <EntityType Name="Medical_Services">
+          <Key>
+            <PropertyRef Name="ID_Medical_Services" />
+          </Key>
+          <Property Name="ID_Medical_Services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_Of_Services" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="Medical_Institutions" Relationship="Self.FK_Medical_Institutions_Medical_Services" FromRole="Medical_Services" ToRole="Medical_Institutions" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID_Contract_Person" />
+          </Key>
+          <Property Name="ID_Contract_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Passport_Series_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contract_Period" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Signing" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Documentation_Insurance_Cases" Relationship="Self.FK_Documentation_Insurance_Cases_Persons" FromRole="Persons" ToRole="Documentation_Insurance_Cases" />
+        </EntityType>
+        <EntityType Name="Role_Users">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Authorizations" Relationship="Self.FK_Authorization_Role_Users" FromRole="Role_Users" ToRole="Authorization" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Authorization_Role_Users">
+          <End Role="Role_Users" Type="Self.Role_Users" Multiplicity="0..1" />
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_Users">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Authorization">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documentation_Insurance_Cases_Insurance_Cases">
+          <End Role="Insurance_Cases" Type="Self.Insurance_Cases" Multiplicity="0..1" />
+          <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance_Cases">
+              <PropertyRef Name="ID_Insurance_Case" />
+            </Principal>
+            <Dependent Role="Documentation_Insurance_Cases">
+              <PropertyRef Name="ID_Insuranse_Case" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documentation_Insurance_Cases_Medical_Institutions">
+          <End Role="Medical_Institutions" Type="Self.Medical_Institutions" Multiplicity="0..1" />
+          <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Institutions">
+              <PropertyRef Name="ID_Contract_Medical_Institution" />
+            </Principal>
+            <Dependent Role="Documentation_Insurance_Cases">
+              <PropertyRef Name="ID_Medical_Institution" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documentation_Insurance_Cases_Persons">
+          <End Role="Persons" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID_Contract_Person" />
+            </Principal>
+            <Dependent Role="Documentation_Insurance_Cases">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Institutions_Medical_Services">
+          <End Role="Medical_Services" Type="Self.Medical_Services" Multiplicity="0..1" />
+          <End Role="Medical_Institutions" Type="Self.Medical_Institutions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Services">
+              <PropertyRef Name="ID_Medical_Services" />
+            </Principal>
+            <Dependent Role="Medical_Institutions">
+              <PropertyRef Name="ID_Medical_Services" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MIC_BarashenkovEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authorizations" EntityType="Self.Authorization" />
+          <EntitySet Name="Documentation_Insurance_Cases" EntityType="Self.Documentation_Insurance_Cases" />
+          <EntitySet Name="Insurance_Cases" EntityType="Self.Insurance_Cases" />
+          <EntitySet Name="Medical_Institutions" EntityType="Self.Medical_Institutions" />
+          <EntitySet Name="Medical_Services" EntityType="Self.Medical_Services" />
+          <EntitySet Name="Persons" EntityType="Self.Person" />
+          <EntitySet Name="Role_Users" EntityType="Self.Role_Users" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Authorization_Role_Users" Association="Self.FK_Authorization_Role_Users">
+            <End Role="Role_Users" EntitySet="Role_Users" />
+            <End Role="Authorization" EntitySet="Authorizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documentation_Insurance_Cases_Insurance_Cases" Association="Self.FK_Documentation_Insurance_Cases_Insurance_Cases">
+            <End Role="Insurance_Cases" EntitySet="Insurance_Cases" />
+            <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documentation_Insurance_Cases_Medical_Institutions" Association="Self.FK_Documentation_Insurance_Cases_Medical_Institutions">
+            <End Role="Medical_Institutions" EntitySet="Medical_Institutions" />
+            <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documentation_Insurance_Cases_Persons" Association="Self.FK_Documentation_Insurance_Cases_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Institutions_Medical_Services" Association="Self.FK_Medical_Institutions_Medical_Services">
+            <End Role="Medical_Services" EntitySet="Medical_Services" />
+            <End Role="Medical_Institutions" EntitySet="Medical_Institutions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MIC_BarashenkovModelContainer" CdmEntityContainer="MIC_BarashenkovEntities">
+          <EntitySetMapping Name="Authorizations">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documentation_Insurance_Cases">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Documentation_Insurance_Cases">
+              <MappingFragment StoreEntitySet="Documentation_Insurance_Cases">
+                <ScalarProperty Name="ID_Documentation" ColumnName="ID_Documentation" />
+                <ScalarProperty Name="Date_Insuranse_Case" ColumnName="Date_Insuranse_Case" />
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="ID_Insuranse_Case" ColumnName="ID_Insuranse_Case" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ID_Medical_Institution" ColumnName="ID_Medical_Institution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurance_Cases">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Insurance_Cases">
+              <MappingFragment StoreEntitySet="Insurance_Cases">
+                <ScalarProperty Name="ID_Insurance_Case" ColumnName="ID_Insurance_Case" />
+                <ScalarProperty Name="Insurance_Case" ColumnName="Insurance_Case" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medical_Institutions">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Medical_Institutions">
+              <MappingFragment StoreEntitySet="Medical_Institutions">
+                <ScalarProperty Name="ID_Contract_Medical_Institution" ColumnName="ID_Contract_Medical_Institution" />
+                <ScalarProperty Name="Name_Med_Ins" ColumnName="Name_Med_Ins" />
+                <ScalarProperty Name="ID_Medical_Services" ColumnName="ID_Medical_Services" />
+                <ScalarProperty Name="Contract_Period" ColumnName="Contract_Period" />
+                <ScalarProperty Name="Date_of_Signing" ColumnName="Date_of_Signing" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medical_Services">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Medical_Services">
+              <MappingFragment StoreEntitySet="Medical_Services">
+                <ScalarProperty Name="ID_Medical_Services" ColumnName="ID_Medical_Services" />
+                <ScalarProperty Name="Type_Of_Services" ColumnName="Type_Of_Services" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="ID_Contract_Person" ColumnName="ID_Contract_Person" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Passport_Series_Number" ColumnName="Passport_Series_Number" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Contract_Period" ColumnName="Contract_Period" />
+                <ScalarProperty Name="Date_of_Signing" ColumnName="Date_of_Signing" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_Users">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.Role_Users">
+              <MappingFragment StoreEntitySet="Role_Users">
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="Name_Role" ColumnName="Name_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MIC_BarashenkovModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
