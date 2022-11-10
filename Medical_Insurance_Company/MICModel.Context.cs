@@ -19,6 +19,7 @@ namespace Medical_Insurance_Company
             : base("name=MIC_BarashenkovEntities")
         {
         }
+
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
