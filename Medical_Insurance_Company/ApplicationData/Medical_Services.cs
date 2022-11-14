@@ -7,23 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Medical_Insurance_Company
+namespace Medical_Insurance_Company.ApplicationData
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Insurance_Cases
+    public partial class Medical_Services
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Insurance_Cases()
+        public Medical_Services()
         {
-            this.Documentation_Insurance_Cases = new HashSet<Documentation_Insurance_Cases>();
+            this.Medical_Institutions = new HashSet<Medical_Institutions>();
         }
     
-        public int ID_Insurance_Case { get; set; }
-        public string Insurance_Case { get; set; }
+        public int ID_Medical_Services { get; set; }
+        public string Type_Of_Services { get; set; }
+        public Nullable<int> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Documentation_Insurance_Cases> Documentation_Insurance_Cases { get; set; }
+        public virtual ICollection<Medical_Institutions> Medical_Institutions { get; set; }
     }
 }

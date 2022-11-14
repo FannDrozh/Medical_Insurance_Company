@@ -7,22 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Medical_Insurance_Company
+namespace Medical_Insurance_Company.ApplicationData
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Documentation_Insurance_Cases
+    public partial class Authorization
     {
-        public int ID_Documentation { get; set; }
-        public Nullable<System.DateTime> Date_Insuranse_Case { get; set; }
-        public Nullable<int> ID_Person { get; set; }
-        public Nullable<int> ID_Insuranse_Case { get; set; }
-        public string Comment { get; set; }
-        public Nullable<int> ID_Medical_Institution { get; set; }
+        public int ID_Person { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public Nullable<int> ID_Role { get; set; }
     
-        public virtual Insurance_Cases Insurance_Cases { get; set; }
-        public virtual Medical_Institutions Medical_Institutions { get; set; }
-        public virtual Person Person { get; set; }
+        public virtual Role_Users Role_Users { get; set; }
     }
 }

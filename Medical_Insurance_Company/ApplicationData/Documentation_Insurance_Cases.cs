@@ -7,17 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Medical_Insurance_Company
+namespace Medical_Insurance_Company.ApplicationData
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Documentation_Insurance_Cases
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int ID_Documentation { get; set; }
+        public Nullable<System.DateTime> Date_Insuranse_Case { get; set; }
+        public Nullable<int> ID_Person { get; set; }
+        public Nullable<int> ID_Insuranse_Case { get; set; }
+        public string Comment { get; set; }
+        public Nullable<int> ID_Medical_Institution { get; set; }
+    
+        public virtual Insurance_Cases Insurance_Cases { get; set; }
+        public virtual Medical_Institutions Medical_Institutions { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

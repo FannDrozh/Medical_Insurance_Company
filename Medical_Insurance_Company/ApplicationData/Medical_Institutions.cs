@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Medical_Insurance_Company
+namespace Medical_Insurance_Company.ApplicationData
 {
     using System;
     using System.Collections.Generic;

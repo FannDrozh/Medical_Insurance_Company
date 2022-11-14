@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Medical_Insurance_Company
+namespace Medical_Insurance_Company.ApplicationData
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Role_Users
+    public partial class Insurance_Cases
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role_Users()
+        public Insurance_Cases()
         {
-            this.Authorizations = new HashSet<Authorization>();
+            this.Documentation_Insurance_Cases = new HashSet<Documentation_Insurance_Cases>();
         }
     
-        public int ID_Role { get; set; }
-        public string Name_Role { get; set; }
+        public int ID_Insurance_Case { get; set; }
+        public string Insurance_Case { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Authorization> Authorizations { get; set; }
+        public virtual ICollection<Documentation_Insurance_Cases> Documentation_Insurance_Cases { get; set; }
     }
 }

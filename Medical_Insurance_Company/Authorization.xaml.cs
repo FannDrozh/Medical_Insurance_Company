@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medical_Insurance_Company.ApplicationData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,28 +23,45 @@ namespace Medical_Insurance_Company
         public Authorization()
         {
             InitializeComponent();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities();
         }
 
         private void Authorization_Bt_Click(object sender, RoutedEventArgs e)
         {
-            if(LoginBox.Text.Length > 0) 
+            try
             {
-                if(PasswordBox.Password.Length > 0)
+                var userObj = AppConnect.modelOdb.Authorizations.FirstOrDefault(x => x.Login == LoginBox.Text && x.Password == PasswordBox.Password);
+                if(userObj == null)
                 {
-                    
+                    MessageBox.Show("Пользователь не зарегистрирован!", "Ошибка авторизации!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Введите верный логин!");
+                    switch (userObj.ID_Role)
+                    {
+                        case 1: MessageBox.Show("Здравствуйте, Администратор " + userObj.Login + "!","Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                            break;
+                        case 2: MessageBox.Show("Здравствуйте, Сотрудник " + userObj.Login + "!", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                            break;
+                        default: MessageBox.Show("Данные не найдены!", "Уведомление",  
+                            MessageBoxButton.OK, MessageBoxImage.Warning);
+                            break;
+                    }
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    Close();
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Введите верный логин!");
+                MessageBox.Show("Ошибка" + ex.Message.ToString() + "Критическая работа приложения!",
+                    "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
+
+            
         }
     }
 }

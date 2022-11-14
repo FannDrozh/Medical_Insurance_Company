@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,10 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -64,34 +67,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Authorization.cs">
+    <Compile Include="ApplicationData\AppConnect.cs" />
+    <Compile Include="ApplicationData\Authorization.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Documentation_Insurance_Cases.cs">
+    <Compile Include="ApplicationData\Documentation_Insurance_Cases.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Insurance_Cases.cs">
+    <Compile Include="ApplicationData\Insurance_Cases.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Medical_Institutions.cs">
+    <Compile Include="ApplicationData\Medical_Institutions.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Medical_Services.cs">
+    <Compile Include="ApplicationData\Medical_Services.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MICModel.cs">
+    <Compile Include="ApplicationData\MICModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs">
+    <Compile Include="ApplicationData\Person.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Role_Users.cs">
+    <Compile Include="ApplicationData\Role_Users.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="ApplicationData\sysdiagram.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\SumbitApp.xaml.cs">
+      <DependentUpon>SumbitApp.xaml</DependentUpon>
     </Compile>
     <Page Include="Authorization.xaml">
       <SubType>Designer</SubType>
@@ -112,14 +119,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Frames\SumbitApp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MICModel.Context.cs">
+    <Compile Include="ApplicationData\MICModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MICModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MICModel.Designer.cs">
+    <Compile Include="ApplicationData\MICModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MICModel.edmx</DependentUpon>
@@ -141,11 +152,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="MICModel.edmx">
+    <EntityDeploy Include="ApplicationData\MICModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MICModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MICModel.edmx.diagram">
+    <None Include="ApplicationData\MICModel.edmx.diagram">
       <DependentUpon>MICModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -158,19 +169,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MICModel.Context.tt">
+    <Content Include="ApplicationData\MICModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MICModel.Context.cs</LastGenOutput>
       <DependentUpon>MICModel.edmx</DependentUpon>
     </Content>
-    <Content Include="MICModel.tt">
+    <Content Include="ApplicationData\MICModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MICModel.edmx</DependentUpon>
       <LastGenOutput>MICModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
