@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medical_Insurance_Company.ApplicationData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace Medical_Insurance_Company
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string log;
         public MainWindow()
         {
             InitializeComponent();
         }
+
+
     }
 }

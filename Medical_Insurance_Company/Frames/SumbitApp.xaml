@@ -9,6 +9,7 @@
       Title="SumbitApp">
 
     <Grid>
-        
+        <Image Source="/Image/Logo.png" />
+
     </Grid>
 </Page>

@@ -24,6 +24,8 @@ namespace Medical_Insurance_Company
         {
             InitializeComponent();
             AppConnect.modelOdb = new MIC_BarashenkovEntities();
+            MainWindow mainWindow = new MainWindow();
+            
         }
 
         private void Authorization_Bt_Click(object sender, RoutedEventArgs e)
@@ -51,6 +53,7 @@ namespace Medical_Insurance_Company
                             break;
                     }
                     MainWindow mainWindow = new MainWindow();
+                    mainWindow.Nameperson.Text = userObj.Login;
                     mainWindow.Show();
                     Close();
                 }
