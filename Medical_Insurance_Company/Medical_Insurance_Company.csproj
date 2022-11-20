@@ -100,10 +100,17 @@
     <Compile Include="ApplicationData\sysdiagram.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Frames\MedicalInstitutions.xaml.cs">
+      <DependentUpon>MedicalInstitutions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\SumbitApp.xaml.cs">
       <DependentUpon>SumbitApp.xaml</DependentUpon>
     </Compile>
     <Page Include="Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\MedicalInstitutions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

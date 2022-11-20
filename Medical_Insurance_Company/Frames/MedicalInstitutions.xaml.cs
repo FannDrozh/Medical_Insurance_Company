@@ -1,5 +1,4 @@
-﻿using Medical_Insurance_Company.ApplicationData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Medical_Insurance_Company
+namespace Medical_Insurance_Company.Frames
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MedicalInstitutions.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MedicalInstitutions : Page
     {
-        public string log;
-        public MainWindow()
+        public MedicalInstitutions()
         {
             InitializeComponent();
         }
-
-
     }
 }
