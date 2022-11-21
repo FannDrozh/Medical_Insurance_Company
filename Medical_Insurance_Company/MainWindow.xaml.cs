@@ -1,4 +1,5 @@
 ﻿using Medical_Insurance_Company.ApplicationData;
+using Medical_Insurance_Company.Frames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,32 +30,33 @@ namespace Medical_Insurance_Company
         //Окно подачи заявки
         private void Sumbit_Application_Click(object sender, RoutedEventArgs e)
         {
-            SumbitFrame.Visibility = Visibility.Visible;
+            MyFrame.Content = new SumbitApp();
         }
         //Застрахованные люди
         private void Insured_People_Click(object sender, RoutedEventArgs e)
         {
-            PersonFrame.Visibility = Visibility.Visible;
+            MyFrame.Content = new Persons();
         }
         //Добавление мед. центров
         private void Add_Med_Center_Click(object sender, RoutedEventArgs e)
         {
-            AddMedInstFrame.Visibility = Visibility.Visible;
+            MyFrame.Content = new AddMedicalInstitutions();
         }
         //Мед. центры
         private void Med_Center_Click(object sender, RoutedEventArgs e)
         {
-            MedInstFrame.Visibility = Visibility.Visible;
+            MyFrame.Content = new MedicalInstitutions();
         }
         //Страховые случаи
         private void Insurence_Cases_Click(object sender, RoutedEventArgs e)
         {
-            InsCasesFrame.Visibility = Visibility.Visible;
+            MyFrame.Content = new InsuranceCases();
         }
         //Документация
         private void Doc_Ins_Cas_Click(object sender, RoutedEventArgs e)
         {
-            DocInstCasesFrame.Visibility= Visibility.Visible;
+            MyFrame.Content = new DocumentationInsuranceCases();
         }
+
     }
 }

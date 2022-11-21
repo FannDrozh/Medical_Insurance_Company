@@ -94,46 +94,9 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <Frame x:Name="SumbitFrame"
-               Grid.ColumnSpan="9"
-               Grid.RowSpan="10"
-               Source="Frames/SumbitApp.xaml" 
-               Margin="161,0,0,0"
-               Visibility="Hidden"/>
-
-        <Frame x:Name="PersonFrame"
-               Grid.ColumnSpan="9"
-               Grid.RowSpan="10"
-               Source="Frames/Persons.xaml" 
-               Margin="161,0,0,0"
-               Visibility="Hidden"/>
-        
-        <Frame x:Name="AddMedInstFrame"
-               Grid.ColumnSpan="9"
-               Grid.RowSpan="10"
-               Source="Frames/AddMedicalInstitutions.xaml" 
-               Margin="161,0,0,0"
-               Visibility="Hidden"/>
-
-        <Frame x:Name="MedInstFrame"
-               Grid.ColumnSpan="9"
-               Grid.RowSpan="10"
-               Source="Frames/MedicalInstitutions.xaml" 
-               Margin="161,0,0,0"
-               Visibility="Hidden"/>
-        
-        <Frame x:Name="InsCasesFrame"
-               Grid.ColumnSpan="9"
-               Grid.RowSpan="10"
-               Source="Frames/InsuranceCases.xaml" 
-               Margin="161,0,0,0"
-               Visibility="Hidden"/>
-        
-        <Frame x:Name="DocInstCasesFrame"
-               Grid.ColumnSpan="9"
-               Grid.RowSpan="10"
-               Source="Frames/DocumentationInsuranceCases.xaml" 
-               Margin="161,0,0,0"
-               Visibility="Hidden"/>
+        <Frame x:Name="MyFrame"
+               Grid.Column="1"
+               Grid.ColumnSpan="8"
+               Grid.RowSpan="10"/>
     </Grid>
 </Window>
