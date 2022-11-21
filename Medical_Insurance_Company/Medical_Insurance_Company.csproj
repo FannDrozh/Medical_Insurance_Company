@@ -100,13 +100,37 @@
     <Compile Include="ApplicationData\sysdiagram.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Frames\AddMedicalInstitutions.xaml.cs">
+      <DependentUpon>AddMedicalInstitutions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\DocumentationInsuranceCases.xaml.cs">
+      <DependentUpon>DocumentationInsuranceCases.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\InsuranceCases.xaml.cs">
+      <DependentUpon>InsuranceCases.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\MedicalInstitutions.xaml.cs">
       <DependentUpon>MedicalInstitutions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\Persons.xaml.cs">
+      <DependentUpon>Persons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\SumbitApp.xaml.cs">
       <DependentUpon>SumbitApp.xaml</DependentUpon>
     </Compile>
-    <Page Include="Authorization.xaml">
+    <Page Include="Windows\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\AddMedicalInstitutions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\DocumentationInsuranceCases.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\InsuranceCases.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,7 +138,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Frames\Persons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -122,10 +150,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Authorization.xaml.cs">
+    <Compile Include="Windows\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -196,6 +224,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
