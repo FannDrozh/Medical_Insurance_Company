@@ -25,62 +25,70 @@
                            FontSize="20"><Run/><LineBreak/><Run Text="Фамилия"/></TextBlock>
                 <TextBox x:Name="Surname"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                   FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Имя"/></TextBlock>
                 <TextBox x:Name="Name"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Отчество"/></TextBlock>
                 <TextBox x:Name="MiddleName"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Дата рождения"/></TextBlock>
-                <TextBox x:Name="Birthdate"
+                <DatePicker x:Name="Birthdate"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Серия и номер паспорта"/></TextBlock>
                 <TextBox x:Name="PassportSeriesNumber"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Контактный телефон"/></TextBlock>
                 <TextBox x:Name="Phone"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Период соглашения"/></TextBlock>
                 <TextBox x:Name="Contract_Period"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Дата подписания"/></TextBlock>
                 <TextBox x:Name="Date_of_Signing"
                    Height="50"
-                   Width="350"/>
+                   Width="350"
+                         FontSize="40"/>
 
                 <Button x:Name="Congrats"
                         Content="Готово"
                         Height="50"
                         Width="350"
-                        Margin="0,20,0,20"/>
+                        Margin="0,20,0,20" Click="Congrats_Click"/>
             </StackPanel>
 
         </ScrollViewer>

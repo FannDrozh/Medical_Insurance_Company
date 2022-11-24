@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Medical_Insurance_Company.ApplicationData;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,32 @@ namespace Medical_Insurance_Company
         public SumbitApp()
         {
             InitializeComponent();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities();
+        }
+
+        private void Congrats_Click(object sender, RoutedEventArgs e)
+        {
+            string[] validformats = new[] { "MM/dd/yyyy", "yyyy/MM/dd", "MM/dd/yyyy HH:mm:ss",
+                                        "MM/dd/yyyy hh:mm tt", "yyyy-MM-dd HH:mm:ss, fff" };
+
+            CultureInfo provider = new CultureInfo("en-US");
+            DateTime Birthdate1 = DateTime.ParseExact(Birthdate.Text, validformats[5], provider);
+            DateTime Date_of_Signing1 = DateTime.Parse(Date_of_Signing.Text);
+            using (var context = new MIC_BarashenkovEntities())
+            {
+                context.Persons.Add(new Person 
+                {
+                    Surname = Surname.Text, 
+                    Name = Name.Text,
+                    Middle_Name = MiddleName.Text,
+                    Birthdate = Birthdate1,
+                    Passport_Series_Number = PassportSeriesNumber.Text,
+                    Phone = Phone.Text,
+                    Contract_Period = Contract_Period.Text,
+                    Date_of_Signing = Date_of_Signing1
+                });
+                context.SaveChanges();
+            }
         }
     }
 }
