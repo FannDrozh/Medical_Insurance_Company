@@ -34,7 +34,7 @@ namespace Medical_Insurance_Company
                                         "MM/dd/yyyy hh:mm tt", "yyyy-MM-dd HH:mm:ss, fff" };
 
             CultureInfo provider = new CultureInfo("en-US");
-            DateTime Birthdate1 = DateTime.ParseExact(Birthdate.Text, validformats[5], provider);
+            DateTime Birthdate1 = DateTime.Parse(Birthdate.Text);
             DateTime Date_of_Signing1 = DateTime.Parse(Date_of_Signing.Text);
             using (var context = new MIC_BarashenkovEntities())
             {
@@ -49,7 +49,10 @@ namespace Medical_Insurance_Company
                     Contract_Period = Contract_Period.Text,
                     Date_of_Signing = Date_of_Signing1
                 });
-                context.SaveChanges();
+                if (context.SaveChanges() != null)
+                {
+                    MessageBox.Show("Вы подали заявку!", "Запись сохранена", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
     }

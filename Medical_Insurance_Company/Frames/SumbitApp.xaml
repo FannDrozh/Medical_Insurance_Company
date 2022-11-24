@@ -79,7 +79,7 @@
                 <TextBlock Height="50"
                            Width="350"
                            FontSize="20"><Run/><LineBreak/><Run Text="Дата подписания"/></TextBlock>
-                <TextBox x:Name="Date_of_Signing"
+                <DatePicker x:Name="Date_of_Signing"
                    Height="50"
                    Width="350"
                          FontSize="40"/>
