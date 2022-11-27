@@ -1,4 +1,5 @@
 ﻿using Medical_Insurance_Company.ApplicationData;
+using Medical_Insurance_Company.Frames;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,10 +23,12 @@ namespace Medical_Insurance_Company
     /// </summary>
     public partial class SumbitApp : Page
     {
+        
         public SumbitApp()
         {
             InitializeComponent();
             AppConnect.modelOdb = new MIC_BarashenkovEntities();
+            
         }
 
         private void Congrats_Click(object sender, RoutedEventArgs e)
@@ -38,7 +41,7 @@ namespace Medical_Insurance_Company
             DateTime Date_of_Signing1 = DateTime.Parse(Date_of_Signing.Text);
             using (var context = new MIC_BarashenkovEntities())
             {
-                context.Persons.Add(new Person 
+                context.Persons.Add(new Person
                 {
                     Surname = Surname.Text, 
                     Name = Name.Text,

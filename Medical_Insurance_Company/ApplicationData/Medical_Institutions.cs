@@ -25,6 +25,8 @@ namespace Medical_Insurance_Company.ApplicationData
         public Nullable<int> ID_Medical_Services { get; set; }
         public string Contract_Period { get; set; }
         public System.DateTime Date_of_Signing { get; set; }
+        public Nullable<double> Price { get; set; }
+        public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Documentation_Insurance_Cases> Documentation_Insurance_Cases { get; set; }

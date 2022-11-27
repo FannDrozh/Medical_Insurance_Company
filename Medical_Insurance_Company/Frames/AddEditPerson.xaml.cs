@@ -1,8 +1,6 @@
-﻿using Medical_Insurance_Company.ApplicationData;
-using System;
+﻿using System;
+using Medical_Insurance_Company.ApplicationData;
 using System.Collections.Generic;
-using System.Data;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,21 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace Medical_Insurance_Company.Frames
 {
     /// <summary>
-    /// Логика взаимодействия для AddMedicalInstitutions.xaml
+    /// Логика взаимодействия для AddEditPerson.xaml
     /// </summary>
-    public partial class AddMedicalInstitutions : Page
+    public partial class AddEditPerson : Page
     {
-        
-        public AddMedicalInstitutions()
-        {
-            InitializeComponent(); 
-            AppConnect.modelOdb = new MIC_BarashenkovEntities();
-            Service.ItemsSource = MIC_BarashenkovEntities.GetContext().Medical_Services.ToList();
+        private Person _currentPerson = new ApplicationData.Person();
 
+        public AddEditPerson(ApplicationData.Person selectedPerson)
+        {
+            InitializeComponent();
+            if (selectedPerson != null)
+                _currentPerson = selectedPerson;
+            DataContext = _currentPerson;
         }
         private void Congrats_Click(object sender, RoutedEventArgs e)
         {
@@ -37,25 +37,24 @@ namespace Medical_Insurance_Company.Frames
                                         "MM/dd/yyyy hh:mm tt", "yyyy-MM-dd HH:mm:ss, fff" };
 
             CultureInfo provider = new CultureInfo("en-US");
+            DateTime Birthdate1 = DateTime.Parse(Birthdate.Text);
             DateTime Date_of_Signing1 = DateTime.Parse(Date_of_Signing.Text);
-            double PriceMed1 = Convert.ToDouble(PriceMed.Text);
-            int id;
-            bool result = int.TryParse(Service.SelectedValue.ToString(), out id);
             using (var context = new MIC_BarashenkovEntities())
             {
-                Service.DataContext= context;
-                context.Medical_Institutions.Add(new Medical_Institutions
+                context.Persons.Add(new ApplicationData.Person
                 {
-                    Name_Med_Ins = NameMedCentr.Text,
-                    ID_Medical_Services = id,
-                    Price = PriceMed1,
+                    Surname = Surname.Text,
+                    Name = Name.Text,
+                    Middle_Name = MiddleName.Text,
+                    Birthdate = Birthdate1,
+                    Passport_Series_Number = PassportSeriesNumber.Text,
                     Phone = Phone.Text,
-                    Contract_Period = ContractPeriod.Text,
+                    Contract_Period = Contract_Period.Text,
                     Date_of_Signing = Date_of_Signing1
                 });
                 if (context.SaveChanges() != null)
                 {
-                    MessageBox.Show("Вы добавили новый мед. центр", "Запись сохранена", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Вы подали заявку!", "Запись сохранена", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }

@@ -22,7 +22,6 @@ namespace Medical_Insurance_Company.ApplicationData
     
         public int ID_Medical_Services { get; set; }
         public string Type_Of_Services { get; set; }
-        public Nullable<int> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medical_Institutions> Medical_Institutions { get; set; }

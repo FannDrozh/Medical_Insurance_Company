@@ -80,6 +80,7 @@
     <Compile Include="ApplicationData\Insurance_Cases.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationData\Manager.cs" />
     <Compile Include="ApplicationData\Medical_Institutions.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
@@ -100,6 +101,9 @@
     <Compile Include="ApplicationData\sysdiagram.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Frames\AddEditPerson.xaml.cs">
+      <DependentUpon>AddEditPerson.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\AddMedicalInstitutions.xaml.cs">
       <DependentUpon>AddMedicalInstitutions.xaml</DependentUpon>
     </Compile>
@@ -119,6 +123,10 @@
       <DependentUpon>SumbitApp.xaml</DependentUpon>
     </Compile>
     <Page Include="Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\AddEditPerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

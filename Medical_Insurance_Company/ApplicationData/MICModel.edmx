@@ -40,6 +40,8 @@
           <Property Name="ID_Contract_Medical_Institution" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name_Med_Ins" Type="varchar(max)" />
           <Property Name="ID_Medical_Services" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Phone" Type="varchar" MaxLength="16" />
           <Property Name="Contract_Period" Type="varchar(max)" />
           <Property Name="Date_of_Signing" Type="date" Nullable="false" />
         </EntityType>
@@ -49,7 +51,6 @@
           </Key>
           <Property Name="ID_Medical_Services" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type_Of_Services" Type="varchar(max)" />
-          <Property Name="Price" Type="int" />
         </EntityType>
         <EntityType Name="Persons">
           <Key>
@@ -220,6 +221,8 @@
           <Property Name="Date_of_Signing" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Documentation_Insurance_Cases" Relationship="Self.FK_Documentation_Insurance_Cases_Medical_Institutions" FromRole="Medical_Institutions" ToRole="Documentation_Insurance_Cases" />
           <NavigationProperty Name="Medical_Services" Relationship="Self.FK_Medical_Institutions_Medical_Services" FromRole="Medical_Institutions" ToRole="Medical_Services" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Medical_Services">
           <Key>
@@ -227,7 +230,6 @@
           </Key>
           <Property Name="ID_Medical_Services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Type_Of_Services" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Int32" />
           <NavigationProperty Name="Medical_Institutions" Relationship="Self.FK_Medical_Institutions_Medical_Services" FromRole="Medical_Services" ToRole="Medical_Institutions" />
         </EntityType>
         <EntityType Name="Person">
@@ -393,6 +395,8 @@
           <EntitySetMapping Name="Medical_Institutions">
             <EntityTypeMapping TypeName="MIC_BarashenkovModel.Medical_Institutions">
               <MappingFragment StoreEntitySet="Medical_Institutions">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ID_Contract_Medical_Institution" ColumnName="ID_Contract_Medical_Institution" />
                 <ScalarProperty Name="Name_Med_Ins" ColumnName="Name_Med_Ins" />
                 <ScalarProperty Name="ID_Medical_Services" ColumnName="ID_Medical_Services" />
@@ -406,7 +410,6 @@
               <MappingFragment StoreEntitySet="Medical_Services">
                 <ScalarProperty Name="ID_Medical_Services" ColumnName="ID_Medical_Services" />
                 <ScalarProperty Name="Type_Of_Services" ColumnName="Type_Of_Services" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

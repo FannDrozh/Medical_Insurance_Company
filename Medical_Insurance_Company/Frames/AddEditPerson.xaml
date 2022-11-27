@@ -1,4 +1,4 @@
-﻿<Page x:Class="Medical_Insurance_Company.Frames.AddMedicalInstitutions"
+﻿<Page x:Class="Medical_Insurance_Company.Frames.AddEditPerson"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:Medical_Insurance_Company.Frames"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="800"
-      Title="AddMedicalInstitutions" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto">
+      Title="AddEditPerson">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60*"/>
             <RowDefinition Height="389*" />
         </Grid.RowDefinitions>
-        <Label Content="Добавление мед. центров" 
+        <Label Content="Страхование" 
                HorizontalAlignment="Center"
                FontSize="30" Grid.RowSpan="1"/>
         <ScrollViewer Grid.Row="1"
@@ -22,27 +22,40 @@
             <StackPanel>
                 <TextBlock Height="50"
                            Width="350"
-                           FontSize="20"><Run/><LineBreak/><Run Text="Наименование мед. центра"/></TextBlock>
-                <TextBox x:Name="NameMedCentr"
+                           FontSize="20"><Run/><LineBreak/><Run Text="Фамилия"/></TextBlock>
+                <TextBox x:Name="Surname"
                    Height="50"
                    Width="350"
                    FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
-                           FontSize="20"><Run/><LineBreak/><Run Text="Предоставляемая услуга"/></TextBlock>
-                <ComboBox x:Name="Service"
-                          Height="50"
-                          Width="350"
-                          SelectedItem="{Binding Medical_Services}"
-                          DisplayMemberPath="Type_Of_Services"
-                          SelectedValuePath="ID_Medical_Services"
-                          FontSize="40"></ComboBox>
+                           FontSize="20"><Run/><LineBreak/><Run Text="Имя"/></TextBlock>
+                <TextBox x:Name="Name"
+                   Height="50"
+                   Width="350"
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
-                           FontSize="20"><Run/><LineBreak/><Run Text="Стоимость"/></TextBlock>
-                <TextBox x:Name="PriceMed"
+                           FontSize="20"><Run/><LineBreak/><Run Text="Отчество"/></TextBlock>
+                <TextBox x:Name="MiddleName"
+                   Height="50"
+                   Width="350"
+                         FontSize="40"/>
+
+                <TextBlock Height="50"
+                           Width="350"
+                           FontSize="20"><Run/><LineBreak/><Run Text="Дата рождения"/></TextBlock>
+                <DatePicker x:Name="Birthdate"
+                   Height="50"
+                   Width="350"
+                FontSize="35"/>
+
+                <TextBlock Height="50"
+                           Width="350"
+                           FontSize="20"><Run/><LineBreak/><Run Text="Серия и номер паспорта"/></TextBlock>
+                <TextBox x:Name="PassportSeriesNumber"
                    Height="50"
                    Width="350"
                          FontSize="40"/>
@@ -53,12 +66,12 @@
                 <TextBox x:Name="Phone"
                    Height="50"
                    Width="350"
-                FontSize="35"/>
+                         FontSize="40"/>
 
                 <TextBlock Height="50"
                            Width="350"
-                           FontSize="20"><Run/><LineBreak/><Run Text="Контрактный период"/></TextBlock>
-                <TextBox x:Name="ContractPeriod"
+                           FontSize="20"><Run/><LineBreak/><Run Text="Период соглашения"/></TextBlock>
+                <TextBox x:Name="Contract_Period"
                    Height="50"
                    Width="350"
                          FontSize="40"/>

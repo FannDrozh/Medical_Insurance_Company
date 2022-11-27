@@ -1,4 +1,5 @@
 ﻿using Medical_Insurance_Company.ApplicationData;
+using Medical_Insurance_Company.Frames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,18 +28,24 @@ namespace Medical_Insurance_Company.Frames
             AppConnect.modelOdb = new MIC_BarashenkovEntities();
             ListPerson.ItemsSource = MIC_BarashenkovEntities.GetContext().Persons.ToList();
         }
-        //private void BtnEdit_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Frame.Navigate(new AddEditPage((sender as Button).DataContext as Person));
-        //}
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            
+           // Manager.MyFrame.Content = new AddEditPerson((sender as Button).DataContext as ApplicationData.Person);
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Frames/SumbitApp.xaml", UriKind.Relative));
+        }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var hotelsForRemoving = ListPerson.SelectedItems.Cast<Person>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следующие {hotelsForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            var PersonForRemoving = ListPerson.SelectedItems.Cast<ApplicationData.Person>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {PersonForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    MIC_BarashenkovEntities.GetContext().Persons.RemoveRange(hotelsForRemoving);
+                    MIC_BarashenkovEntities.GetContext().Persons.RemoveRange(PersonForRemoving);
                     MIC_BarashenkovEntities.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены!");
                 }

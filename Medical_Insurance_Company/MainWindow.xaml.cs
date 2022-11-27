@@ -23,9 +23,11 @@ namespace Medical_Insurance_Company
     public partial class MainWindow : Window
     {
         public string log;
+
         public MainWindow()
         {
             InitializeComponent();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities();
         }
         //Окно подачи заявки
         private void Sumbit_Application_Click(object sender, RoutedEventArgs e)
@@ -35,7 +37,7 @@ namespace Medical_Insurance_Company
         //Застрахованные люди
         private void Insured_People_Click(object sender, RoutedEventArgs e)
         {
-            MyFrame.Content = new Persons();
+            MyFrame.Content = new Frames.Persons();
         }
         //Добавление мед. центров
         private void Add_Med_Center_Click(object sender, RoutedEventArgs e)
