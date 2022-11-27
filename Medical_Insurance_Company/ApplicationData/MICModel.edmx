@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище MIC_BarashenkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище MIC_BarashenkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authorization">
           <Key>
             <PropertyRef Name="ID_Person" />
@@ -12,7 +12,7 @@
           <Property Name="ID_Person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ID_Role" Type="int" />
+          <Property Name="ID_Role" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Documentation_Insurance_Cases">
           <Key>
@@ -31,6 +31,7 @@
           </Key>
           <Property Name="ID_Insurance_Case" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Insurance_Case" Type="varchar(max)" />
+          <Property Name="Insurance_&#xA;payment" Type="int" />
         </EntityType>
         <EntityType Name="Medical_Institutions">
           <Key>
@@ -82,7 +83,7 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Authorization_Role_Users">
-          <End Role="Role_Users" Type="Self.Role_Users" Multiplicity="0..1" />
+          <End Role="Role_Users" Type="Self.Role_Users" Multiplicity="1" />
           <End Role="Authorization" Type="Self.Authorization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role_Users">
@@ -171,8 +172,7 @@
             <End Role="Medical_Institutions" EntitySet="Medical_Institutions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MIC_BarashenkovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -183,8 +183,8 @@
           <Property Name="ID_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_Role" Type="Int32" />
-          <NavigationProperty Name="Role_Users" Relationship="Self.FK_Authorization_Role_Users" FromRole="Authorization" ToRole="Role_Users" />
+          <Property Name="ID_Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role_Users" Relationship="MIC_BarashenkovModel.FK_Authorization_Role_Users" FromRole="Authorization" ToRole="Role_Users" />
         </EntityType>
         <EntityType Name="Documentation_Insurance_Cases">
           <Key>
@@ -207,6 +207,7 @@
           <Property Name="ID_Insurance_Case" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Insurance_Case" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Documentation_Insurance_Cases" Relationship="Self.FK_Documentation_Insurance_Cases_Insurance_Cases" FromRole="Insurance_Cases" ToRole="Documentation_Insurance_Cases" />
+          <Property Name="Insurance__payment" Type="Int32" />
         </EntityType>
         <EntityType Name="Medical_Institutions">
           <Key>
@@ -250,7 +251,7 @@
           </Key>
           <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name_Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Authorizations" Relationship="Self.FK_Authorization_Role_Users" FromRole="Role_Users" ToRole="Authorization" />
+          <NavigationProperty Name="Authorizations" Relationship="MIC_BarashenkovModel.FK_Authorization_Role_Users" FromRole="Role_Users" ToRole="Authorization" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -262,18 +263,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Authorization_Role_Users">
-          <End Role="Role_Users" Type="Self.Role_Users" Multiplicity="0..1" />
-          <End Role="Authorization" Type="Self.Authorization" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role_Users">
-              <PropertyRef Name="ID_Role" />
-            </Principal>
-            <Dependent Role="Authorization">
-              <PropertyRef Name="ID_Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Documentation_Insurance_Cases_Insurance_Cases">
           <End Role="Insurance_Cases" Type="Self.Insurance_Cases" Multiplicity="0..1" />
           <End Role="Documentation_Insurance_Cases" Type="Self.Documentation_Insurance_Cases" Multiplicity="*" />
@@ -331,10 +320,6 @@
           <EntitySet Name="Persons" EntityType="Self.Person" />
           <EntitySet Name="Role_Users" EntityType="Self.Role_Users" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_Authorization_Role_Users" Association="Self.FK_Authorization_Role_Users">
-            <End Role="Role_Users" EntitySet="Role_Users" />
-            <End Role="Authorization" EntitySet="Authorizations" />
-          </AssociationSet>
           <AssociationSet Name="FK_Documentation_Insurance_Cases_Insurance_Cases" Association="Self.FK_Documentation_Insurance_Cases_Insurance_Cases">
             <End Role="Insurance_Cases" EntitySet="Insurance_Cases" />
             <End Role="Documentation_Insurance_Cases" EntitySet="Documentation_Insurance_Cases" />
@@ -351,7 +336,23 @@
             <End Role="Medical_Services" EntitySet="Medical_Services" />
             <End Role="Medical_Institutions" EntitySet="Medical_Institutions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Authorization_Role_Users" Association="MIC_BarashenkovModel.FK_Authorization_Role_Users">
+            <End Role="Role_Users" EntitySet="Role_Users" />
+            <End Role="Authorization" EntitySet="Authorizations" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Authorization_Role_Users">
+          <End Type="MIC_BarashenkovModel.Role_Users" Role="Role_Users" Multiplicity="1" />
+          <End Type="MIC_BarashenkovModel.Authorization" Role="Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_Users">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Authorization">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -383,6 +384,7 @@
           <EntitySetMapping Name="Insurance_Cases">
             <EntityTypeMapping TypeName="MIC_BarashenkovModel.Insurance_Cases">
               <MappingFragment StoreEntitySet="Insurance_Cases">
+                <ScalarProperty Name="Insurance__payment" ColumnName="Insurance_&#xA;payment" />
                 <ScalarProperty Name="ID_Insurance_Case" ColumnName="ID_Insurance_Case" />
                 <ScalarProperty Name="Insurance_Case" ColumnName="Insurance_Case" />
               </MappingFragment>

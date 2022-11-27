@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medical_Insurance_Company"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow" Height="500" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="161*"/>
@@ -32,9 +32,9 @@
         </Grid.RowDefinitions>
         <StackPanel x:Name="StackPanel"
                     Grid.RowSpan="10" Margin="0,0,1,0">
-            <Image Source="/Image/Logo.png" Height="61" Width="113" />
+            <Image Source="/Image/Logo.png" Height="61" Width="157" />
             <TextBlock x:Name="Nameperson"
-                       Height="70"
+                       Height="41"
                        FontSize="15"
                        TextAlignment="Center" 
                        TextDecorations="Underline">
@@ -43,60 +43,76 @@
                 <Run Text=""/>
             </TextBlock>
 
-            <Menu x:Name="MainMenu" Height="455" RenderTransformOrigin="0.509,0.469" Width="159">
-                <MenuItem Header="Подать заявку" 
-                          x:Name="Sumbit_Application"
-                          Height="41" 
-                          Width="159" Click="Sumbit_Application_Click">
+            <Menu x:Name="MainMenu" 
+                  Height="536" 
+                  RenderTransformOrigin="0.509,0.469" 
+                  Width="160">
+                <MenuItem Header="&#xA;&#xA;&#xA;   Страхование" 
+                          x:Name="Insurence"
+                          Height="80" 
+                          Width="159">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" />
+                        <Image Source="/Image/Logo.png" Margin="32,-26,-93,-11" Width="50" Height="50" />
                     </MenuItem.Icon>
+                    <MenuItem Header="Подать заявку" 
+                                  x:Name="Sumbit_Application"
+                                  Click="Sumbit_Application_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Image/Logo.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Застрахованные люди" 
+                              x:Name="Insured_People"
+                              HorizontalAlignment="Center"
+                              Click="Insured_People_Click" RenderTransformOrigin="0.47,0.491">
+                        <MenuItem.Icon>
+                            <Image Source="/Image/Logo.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Застрахованные люди" 
-                          x:Name="Insured_People"
-                          Height="41" 
-                          Width="160" Click="Insured_People_Click">
-                    <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="Добавить Мед. центры" 
-                          x:Name="Add_Med_Center"
-                          Height="41" 
-                          Width="158" Click="Add_Med_Center_Click">
-                    <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="Мед. центры" 
+                <MenuItem Header="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    Мед. центры" 
                           x:Name="Med_Center"
-                          Height="41" 
-                          Width="158" Click="Med_Center_Click">
+                          Height="80" 
+                          Width="160">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" />
+                        <Image Source="/Image/Logo.png" Margin="32,-26,-93,-11" Width="50" Height="50"/>
                     </MenuItem.Icon>
+                    <MenuItem Header="Список мед. центров" 
+                          x:Name="List_Med_Center"
+                          Click="Med_Center_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Image/Logo.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Добавить мед. центры" 
+                          x:Name="Add_Med_Center"
+                              Click="Add_Med_Center_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Image/Logo.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Страховые случаи" 
+                <MenuItem Header="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Страховые случаи" 
                           x:Name="Insurence_Cases"
-                          Height="41" 
+                          Height="80" 
                           Width="159" Click="Insurence_Cases_Click">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" />
+                        <Image Source="/Image/Logo.png" Height="50" Margin="32,-26,-93,-11"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Документация" 
+                <MenuItem Header="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  Документация" 
                           x:Name="Doc_Ins_Cas"
-                          Height="41" 
+                          Height="80" 
                           Width="159" Click="Doc_Ins_Cas_Click">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" />
+                        <Image Source="/Image/Logo.png" Height="50" Margin="32,-26,-93,-11"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>
         </StackPanel>
         <Frame x:Name="MyFrame"
-               Grid.Column="1"
-               Grid.ColumnSpan="8"
-               Grid.RowSpan="10"/>
+               Grid.ColumnSpan="9"
+               Grid.RowSpan="10"
+               NavigationUIVisibility="Hidden" Margin="160,0,10,0"/>
     </Grid>
 </Window>

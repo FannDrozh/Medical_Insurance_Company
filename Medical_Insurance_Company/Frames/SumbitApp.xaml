@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Medical_Insurance_Company"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="800"
-      Title="SumbitApp" ScrollViewer.VerticalScrollBarVisibility="Auto">
+      Title="SumbitApp" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="White">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -50,7 +50,7 @@
                 <DatePicker x:Name="Birthdate"
                    Height="50"
                    Width="350"
-                FontSize="40"/>
+                FontSize="35"/>
 
                 <TextBlock Height="50"
                            Width="350"
@@ -82,7 +82,7 @@
                 <DatePicker x:Name="Date_of_Signing"
                    Height="50"
                    Width="350"
-                         FontSize="40"/>
+                   FontSize="35"/>
 
                 <Button x:Name="Congrats"
                         Content="Готово"

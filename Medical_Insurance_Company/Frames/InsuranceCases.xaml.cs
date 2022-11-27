@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medical_Insurance_Company.ApplicationData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Medical_Insurance_Company.Frames
         public InsuranceCases()
         {
             InitializeComponent();
+            ListInsurenceCases.ItemsSource = MIC_BarashenkovEntities.GetContext().Insurance_Cases.ToList();
         }
     }
 }

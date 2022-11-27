@@ -17,7 +17,7 @@ namespace Medical_Insurance_Company.ApplicationData
         public int ID_Person { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public Nullable<int> ID_Role { get; set; }
+        public int ID_Role { get; set; }
     
         public virtual Role_Users Role_Users { get; set; }
     }

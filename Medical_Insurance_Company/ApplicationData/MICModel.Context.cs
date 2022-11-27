@@ -15,11 +15,18 @@ namespace Medical_Insurance_Company.ApplicationData
     
     public partial class MIC_BarashenkovEntities : DbContext
     {
+        private static MIC_BarashenkovEntities _context;
         public MIC_BarashenkovEntities()
             : base("name=MIC_BarashenkovEntities")
         {
         }
-    
+        public static MIC_BarashenkovEntities GetContext()
+        {
+            if (_context == null)
+                _context = new MIC_BarashenkovEntities();
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

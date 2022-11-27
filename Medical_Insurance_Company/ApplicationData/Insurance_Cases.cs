@@ -22,6 +22,7 @@ namespace Medical_Insurance_Company.ApplicationData
     
         public int ID_Insurance_Case { get; set; }
         public string Insurance_Case { get; set; }
+        public Nullable<int> Insurance__payment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Documentation_Insurance_Cases> Documentation_Insurance_Cases { get; set; }

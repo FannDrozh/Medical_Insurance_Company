@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Medical_Insurance_Company.Frames"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddMedicalInstitutions">
+      Title="AddMedicalInstitutions" Background="White">
 
     <Grid>
         

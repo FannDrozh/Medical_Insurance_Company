@@ -6,9 +6,69 @@
       xmlns:local="clr-namespace:Medical_Insurance_Company.Frames"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Persons">
+      Title="Persons" Background="White">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="151*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
         
+        <Label x:Name="LabelPerson"
+               Content="Список застрахованных людей"
+               FontSize="40"
+               HorizontalAlignment="Center" Width="578"/>
+        
+        <DataGrid x:Name="ListPerson"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Имя" 
+                    Binding="{Binding Name}"/>
+                <DataGridTextColumn 
+                    Header="Фамилия" 
+                    Binding="{Binding Surname}"/>
+                <DataGridTextColumn 
+                    Header="Отчество" 
+                    Binding="{Binding Middle_Name}"/>
+                <DataGridTextColumn 
+                    Header="День рождение"
+                    Binding="{Binding Birthdate}"/>
+                <DataGridTextColumn 
+                    Header="Паспортные данные"
+                    Binding="{Binding Passport_Series_Number}"/>
+                <DataGridTextColumn
+                    Header="Телефон"
+                    Binding="{Binding Phone}"/>
+                <DataGridTextColumn
+                    Header="Контрактный период"
+                    Binding="{Binding Contract_Period}"/>
+                <DataGridTextColumn
+                    Header="Дата подписания"
+                    Binding="{Binding Date_of_Signing}"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button 
+                            Content="Редактировать" 
+                            Name="BtnEdit" ></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="Add"
+                Grid.Row="2"
+                Content="Добавить" 
+                Margin="50,10,600,10"/>
+        
+        <Button x:Name="Del"
+                Grid.Row="2"
+                Content="Удалить" 
+                Margin="600,10,50,10"/>
     </Grid>
 </Page>
