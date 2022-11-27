@@ -101,8 +101,8 @@
     <Compile Include="ApplicationData\sysdiagram.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Frames\AddEditPerson.xaml.cs">
-      <DependentUpon>AddEditPerson.xaml</DependentUpon>
+    <Compile Include="Frames\AddInsuranceCase.xaml.cs">
+      <DependentUpon>AddInsuranceCase.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\AddMedicalInstitutions.xaml.cs">
       <DependentUpon>AddMedicalInstitutions.xaml</DependentUpon>
@@ -126,7 +126,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\AddEditPerson.xaml">
+    <Page Include="Frames\AddInsuranceCase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +225,10 @@
       <DependentUpon>MICModel.edmx</DependentUpon>
       <LastGenOutput>MICModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\Doc.png" />
+    <Resource Include="Image\InsCase.png" />
+    <Resource Include="Image\MedCentr.png" />
+    <Resource Include="Image\Insurance.png" />
     <Resource Include="Logo.ico" />
     <Resource Include="Image\Logo.ico" />
     <Resource Include="Image\Logo.png" />

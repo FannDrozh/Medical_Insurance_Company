@@ -52,7 +52,7 @@
                           Height="80" 
                           Width="159">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" Margin="32,-26,-93,-11" Width="50" Height="50" />
+                        <Image Source="/Image/Insurance.png" Margin="32,-26,-93,-11" Width="50" Height="50" />
                     </MenuItem.Icon>
                     <MenuItem Header="Подать заявку" 
                                   x:Name="Sumbit_Application"
@@ -75,7 +75,7 @@
                           Height="80" 
                           Width="160">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" Margin="32,-26,-93,-11" Width="50" Height="50"/>
+                        <Image Source="/Image/MedCentr.png" Margin="32,-26,-93,-11" Width="50" Height="50"/>
                     </MenuItem.Icon>
                     <MenuItem Header="Список мед. центров" 
                           x:Name="List_Med_Center"
@@ -97,7 +97,7 @@
                           Height="80" 
                           Width="159" Click="Insurence_Cases_Click">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" Height="50" Margin="32,-26,-93,-11"/>
+                        <Image Source="/Image/InsCase.png" Height="50" Margin="32,-26,-93,-11"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  Документация" 
@@ -105,7 +105,7 @@
                           Height="80" 
                           Width="159" Click="Doc_Ins_Cas_Click">
                     <MenuItem.Icon>
-                        <Image Source="/Image/Logo.png" Height="50" Margin="32,-26,-93,-11"/>
+                        <Image Source="/Image/Doc.png" Height="50" Margin="32,-26,-93,-11"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>

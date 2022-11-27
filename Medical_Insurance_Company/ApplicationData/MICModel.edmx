@@ -31,7 +31,7 @@
           </Key>
           <Property Name="ID_Insurance_Case" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Insurance_Case" Type="varchar(max)" />
-          <Property Name="Insurance_&#xA;payment" Type="int" />
+          <Property Name="Insurance__payment" Type="int" />
         </EntityType>
         <EntityType Name="Medical_Institutions">
           <Key>
@@ -386,7 +386,6 @@
           <EntitySetMapping Name="Insurance_Cases">
             <EntityTypeMapping TypeName="MIC_BarashenkovModel.Insurance_Cases">
               <MappingFragment StoreEntitySet="Insurance_Cases">
-                <ScalarProperty Name="Insurance__payment" ColumnName="Insurance_&#xA;payment" />
                 <ScalarProperty Name="ID_Insurance_Case" ColumnName="ID_Insurance_Case" />
                 <ScalarProperty Name="Insurance_Case" ColumnName="Insurance_Case" />
               </MappingFragment>

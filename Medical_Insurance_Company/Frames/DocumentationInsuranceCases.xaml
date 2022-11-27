@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Medical_Insurance_Company.Frames"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DocumentationInsuranceCases" Background="White">
+      Title="DocumentationInsuranceCases" Background="White" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,21 +16,33 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="LabelPerson"
-               Content="Страховые случаи"
+               Content="Документация"
                FontSize="40"
                HorizontalAlignment="Center"/>
 
-        <DataGrid x:Name="ListPerson"
+        <DataGrid x:Name="ListDoc"
                   Grid.Row="1"
                   AutoGenerateColumns="False" 
                   IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn 
-                    Header="Страховые случаи" 
-                    Binding="{Binding Insurance_Case}"/>
+                    Header="ID" 
+                    Binding="{Binding ID_Documentation}"/>
                 <DataGridTextColumn
-                    Header="Размер страховой выплаты"
-                    Binding="{Binding Insurance__payment}"/>
+                    Header="Дата страхового случая"
+                    Binding="{Binding Date_Insuranse_Case}"/>
+                <DataGridTextColumn
+                    Header="Застрахованный человек"
+                    Binding="{Binding ID_Person}"/>
+                <DataGridTextColumn
+                    Header="Страховой случай"
+                    Binding="{Binding ID_Insuranse_Case}"/>
+                <DataGridTextColumn
+                    Header="Комментарий"
+                    Binding="{Binding Comment}"/>
+                <DataGridTextColumn
+                    Header="Медецинский центр"
+                    Binding="{Binding ID_Medical_Institution}"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

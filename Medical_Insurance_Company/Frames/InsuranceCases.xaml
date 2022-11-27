@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Medical_Insurance_Company.Frames"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="InsuranceCases" Background="White">
+      Title="InsuranceCases" Background="White" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,9 +25,15 @@
                   AutoGenerateColumns="False" 
                   IsReadOnly="True">
             <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="ID"
+                    Binding="{Binding ID_Insurance_Case}"/>
                 <DataGridTextColumn 
                     Header="Страховые случаи" 
                     Binding="{Binding Insurance_Case}"/>
+                <DataGridTextColumn 
+                    Header="Процент выплат" 
+                    Binding="{Binding Insurance__payment}"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -43,11 +49,13 @@
         <Button x:Name="Add"
                 Grid.Row="2"
                 Content="Добавить" 
+                Click="BtnAdd_Click"
                 Margin="50,10,600,10"/>
 
         <Button x:Name="Del"
                 Grid.Row="2"
                 Content="Удалить" 
+                Click="BtnDelete_Click"
                 Margin="600,10,50,10"/>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medical_Insurance_Company.ApplicationData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,36 @@ namespace Medical_Insurance_Company.Frames
         public DocumentationInsuranceCases()
         {
             InitializeComponent();
+            ListDoc.ItemsSource = MIC_BarashenkovEntities.GetContext().Documentation_Insurance_Cases.ToList();
+        }
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Frames/AddMedicalInstitutions.xaml", UriKind.Relative));
+        }
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var DocForRemoving = ListDoc.SelectedItems.Cast<Documentation_Insurance_Cases>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {DocForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    MIC_BarashenkovEntities.GetContext().Documentation_Insurance_Cases.RemoveRange(DocForRemoving);
+                    MIC_BarashenkovEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+        }
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                MIC_BarashenkovEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ListDoc.ItemsSource = MIC_BarashenkovEntities.GetContext().Documentation_Insurance_Cases.ToList();
+            }
         }
     }
 }
