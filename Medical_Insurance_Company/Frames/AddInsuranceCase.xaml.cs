@@ -26,12 +26,12 @@ namespace Medical_Insurance_Company.Frames
         public AddInsuranceCase()
         {
             InitializeComponent();
-            AppConnect.modelOdb = new MIC_BarashenkovEntities();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities1();
         }
         private void Congrats_Click(object sender, RoutedEventArgs e)
         {
             int per = int.Parse(Percent.Text);
-            using (var context = new MIC_BarashenkovEntities())
+            using (var context = new MIC_BarashenkovEntities1())
             {
                 context.Insurance_Cases.Add(new Insurance_Cases
                 {

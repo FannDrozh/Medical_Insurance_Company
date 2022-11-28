@@ -8,6 +8,6 @@ namespace Medical_Insurance_Company.ApplicationData
 {
     internal class AppConnect
     {
-        public static MIC_BarashenkovEntities modelOdb;
+        public static MIC_BarashenkovEntities1 modelOdb;
     }
 }

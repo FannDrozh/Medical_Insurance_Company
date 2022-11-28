@@ -24,7 +24,7 @@ namespace Medical_Insurance_Company.Frames
         public InsuranceCases()
         {
             InitializeComponent();
-            ListInsurenceCases.ItemsSource = MIC_BarashenkovEntities.GetContext().Insurance_Cases.ToList();
+            ListInsurenceCases.ItemsSource = MIC_BarashenkovEntities1.GetContext().Insurance_Cases.ToList();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -37,8 +37,8 @@ namespace Medical_Insurance_Company.Frames
             {
                 try
                 {
-                    MIC_BarashenkovEntities.GetContext().Insurance_Cases.RemoveRange(InsCaseForRemoving);
-                    MIC_BarashenkovEntities.GetContext().SaveChanges();
+                    MIC_BarashenkovEntities1.GetContext().Insurance_Cases.RemoveRange(InsCaseForRemoving);
+                    MIC_BarashenkovEntities1.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены!");
                 }
                 catch (Exception ex)
@@ -51,8 +51,8 @@ namespace Medical_Insurance_Company.Frames
         {
             if (Visibility == Visibility.Visible)
             {
-                MIC_BarashenkovEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                ListInsurenceCases.ItemsSource = MIC_BarashenkovEntities.GetContext().Insurance_Cases.ToList();
+                MIC_BarashenkovEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ListInsurenceCases.ItemsSource = MIC_BarashenkovEntities1.GetContext().Insurance_Cases.ToList();
             }
         }
     }

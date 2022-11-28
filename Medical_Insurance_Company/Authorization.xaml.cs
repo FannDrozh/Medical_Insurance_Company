@@ -23,7 +23,7 @@ namespace Medical_Insurance_Company
         public Authorization()
         {
             InitializeComponent();
-            AppConnect.modelOdb = new MIC_BarashenkovEntities();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities1();
             MainWindow mainWindow = new MainWindow();
             
         }

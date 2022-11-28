@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2a18a6a979cf42368a309fca29fedd9c" Name="Diagram1" ZoomLevel="95">
+      <Diagram DiagramId="176018fc3d174507aba71f56fb5b259c" Name="Diagram1">
         <EntityTypeShape EntityType="MIC_BarashenkovModel.Authorization" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MIC_BarashenkovModel.Documentation_Insurance_Cases" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MIC_BarashenkovModel.Insurance_Cases" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MIC_BarashenkovModel.Medical_Institutions" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MIC_BarashenkovModel.Insurance_Cases" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MIC_BarashenkovModel.Medical_Institutions" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MIC_BarashenkovModel.Medical_Services" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MIC_BarashenkovModel.Person" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MIC_BarashenkovModel.Person" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MIC_BarashenkovModel.Role_Users" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MIC_BarashenkovModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MIC_BarashenkovModel.FK_Authorization_Role_Users" ManuallyRouted="false" />
         <AssociationConnector Association="MIC_BarashenkovModel.FK_Documentation_Insurance_Cases_Insurance_Cases" ManuallyRouted="false" />
         <AssociationConnector Association="MIC_BarashenkovModel.FK_Documentation_Insurance_Cases_Medical_Institutions" ManuallyRouted="false" />
         <AssociationConnector Association="MIC_BarashenkovModel.FK_Documentation_Insurance_Cases_Persons" ManuallyRouted="false" />
         <AssociationConnector Association="MIC_BarashenkovModel.FK_Medical_Institutions_Medical_Services" ManuallyRouted="false" />
-        <AssociationConnector Association="MIC_BarashenkovModel.FK_Authorization_Role_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

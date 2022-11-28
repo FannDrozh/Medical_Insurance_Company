@@ -87,10 +87,20 @@
     <Compile Include="ApplicationData\Medical_Services.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationData\MICModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MICModel.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="ApplicationData\MICModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MICModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationData\MICModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MICModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationData\Person.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
@@ -171,16 +181,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationData\MICModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MICModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ApplicationData\MICModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MICModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -215,6 +215,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\Doc.png" />
+    <Resource Include="Image\InsCase.png" />
+    <Resource Include="Image\MedCentr.png" />
+    <Resource Include="Image\Insurance.png" />
+    <Resource Include="Logo.ico" />
+    <Resource Include="Image\Logo.ico" />
+    <SplashScreen Include="Image\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ApplicationData\MICModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MICModel.Context.cs</LastGenOutput>
@@ -225,18 +237,7 @@
       <DependentUpon>MICModel.edmx</DependentUpon>
       <LastGenOutput>MICModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Image\Doc.png" />
-    <Resource Include="Image\InsCase.png" />
-    <Resource Include="Image\MedCentr.png" />
-    <Resource Include="Image\Insurance.png" />
-    <Resource Include="Logo.ico" />
-    <Resource Include="Image\Logo.ico" />
-    <Resource Include="Image\Logo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

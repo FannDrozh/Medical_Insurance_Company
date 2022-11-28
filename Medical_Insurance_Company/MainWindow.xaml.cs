@@ -27,7 +27,7 @@ namespace Medical_Insurance_Company
         public MainWindow()
         {
             InitializeComponent();
-            AppConnect.modelOdb = new MIC_BarashenkovEntities();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities1();
         }
         //Окно подачи заявки
         private void Sumbit_Application_Click(object sender, RoutedEventArgs e)

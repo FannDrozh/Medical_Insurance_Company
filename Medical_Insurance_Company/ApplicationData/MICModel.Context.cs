@@ -13,20 +13,19 @@ namespace Medical_Insurance_Company.ApplicationData
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MIC_BarashenkovEntities : DbContext
+    public partial class MIC_BarashenkovEntities1 : DbContext
     {
-        private static MIC_BarashenkovEntities _context;
-        public MIC_BarashenkovEntities()
+        private static MIC_BarashenkovEntities1 _context;
+        public MIC_BarashenkovEntities1()
             : base("name=MIC_BarashenkovEntities")
         {
         }
-        public static MIC_BarashenkovEntities GetContext()
+        public static MIC_BarashenkovEntities1 GetContext()
         {
             if (_context == null)
-                _context = new MIC_BarashenkovEntities();
+                _context = new MIC_BarashenkovEntities1();
             return _context;
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

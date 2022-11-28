@@ -27,8 +27,8 @@ namespace Medical_Insurance_Company.Frames
         public AddMedicalInstitutions()
         {
             InitializeComponent(); 
-            AppConnect.modelOdb = new MIC_BarashenkovEntities();
-            Service.ItemsSource = MIC_BarashenkovEntities.GetContext().Medical_Services.ToList();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities1();
+            Service.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Services.ToList();
 
         }
         private void Congrats_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace Medical_Insurance_Company.Frames
             double PriceMed1 = Convert.ToDouble(PriceMed.Text);
             int id;
             bool result = int.TryParse(Service.SelectedValue.ToString(), out id);
-            using (var context = new MIC_BarashenkovEntities())
+            using (var context = new MIC_BarashenkovEntities1())
             {
                 Service.DataContext= context;
                 context.Medical_Institutions.Add(new Medical_Institutions

@@ -27,7 +27,7 @@ namespace Medical_Insurance_Company
         public SumbitApp()
         {
             InitializeComponent();
-            AppConnect.modelOdb = new MIC_BarashenkovEntities();
+            AppConnect.modelOdb = new MIC_BarashenkovEntities1();
             
         }
 
@@ -39,7 +39,7 @@ namespace Medical_Insurance_Company
             CultureInfo provider = new CultureInfo("en-US");
             DateTime Birthdate1 = DateTime.Parse(Birthdate.Text);
             DateTime Date_of_Signing1 = DateTime.Parse(Date_of_Signing.Text);
-            using (var context = new MIC_BarashenkovEntities())
+            using (var context = new MIC_BarashenkovEntities1())
             {
                 context.Persons.Add(new Person
                 {
