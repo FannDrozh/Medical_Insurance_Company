@@ -33,7 +33,7 @@
                     Binding="{Binding Name_Med_Ins}"/>
                 <DataGridTextColumn 
                     Header="Предоставляемая услуга" 
-                    Binding="{Binding Medical_Services.Type_Of_Services}"/>
+                    Binding="{Binding }"/>
                 <DataGridTextColumn 
                     Header="Стоимость" 
                     Binding="{Binding Price}"/>

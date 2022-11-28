@@ -55,6 +55,7 @@ namespace Medical_Insurance_Company
                 if (context.SaveChanges() != null)
                 {
                     MessageBox.Show("Вы подали заявку!", "Запись сохранена", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.NavigationService.Navigate(new Uri("Frames/Persons.xaml", UriKind.Relative));
                 }
             }
         }

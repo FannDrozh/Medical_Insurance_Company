@@ -111,6 +111,9 @@
     <Compile Include="ApplicationData\sysdiagram.cs">
       <DependentUpon>MICModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Frames\AddDocumentationInsuranceCases.xaml.cs">
+      <DependentUpon>AddDocumentationInsuranceCases.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\AddInsuranceCase.xaml.cs">
       <DependentUpon>AddInsuranceCase.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <DependentUpon>SumbitApp.xaml</DependentUpon>
     </Compile>
     <Page Include="Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\AddDocumentationInsuranceCases.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

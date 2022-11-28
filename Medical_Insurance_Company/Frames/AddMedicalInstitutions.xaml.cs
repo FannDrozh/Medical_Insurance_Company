@@ -56,6 +56,7 @@ namespace Medical_Insurance_Company.Frames
                 if (context.SaveChanges() != null)
                 {
                     MessageBox.Show("Вы добавили новый мед. центр", "Запись сохранена", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.NavigationService.Navigate(new Uri("Frames/MedicalInstitutions.xaml", UriKind.Relative));
                 }
             }
         }

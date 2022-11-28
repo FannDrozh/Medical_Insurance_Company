@@ -53,7 +53,8 @@ namespace Medical_Insurance_Company.Frames
             if (Visibility == Visibility.Visible)
             {
                 MIC_BarashenkovEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Persons.ToList();
+                ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Institutions.ToList();
+                ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Services.ToList();
             }
         }
     }

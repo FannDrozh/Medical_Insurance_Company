@@ -28,7 +28,7 @@ namespace Medical_Insurance_Company.Frames
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Frames/AddMedicalInstitutions.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("Frames/AddDocumentationInsuranceCases.xaml", UriKind.Relative));
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {

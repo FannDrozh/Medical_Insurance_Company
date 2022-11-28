@@ -58,11 +58,13 @@
         <Button x:Name="Add"
                 Grid.Row="2"
                 Content="Добавить" 
+                Click="BtnAdd_Click"
                 Margin="50,10,600,10"/>
 
         <Button x:Name="Del"
                 Grid.Row="2"
                 Content="Удалить" 
+                Click="BtnDelete_Click"
                 Margin="600,10,50,10"/>
     </Grid>
 </Page>
