@@ -60,18 +60,11 @@
                    Width="350"
                          FontSize="40"/>
 
-                <TextBlock Height="50"
-                           Width="350"
-                           FontSize="20"><Run/><LineBreak/><Run Text="Дата подписания"/></TextBlock>
-                <DatePicker x:Name="Date_of_Signing"
-                   Height="50"
-                   Width="350"
-                   FontSize="35"/>
-
                 <Button x:Name="Congrats"
                         Content="Готово"
                         Height="50"
                         Width="350"
+                        Click="Congrats_Click"
                         Margin="0,20,0,20" />
             </StackPanel>
 

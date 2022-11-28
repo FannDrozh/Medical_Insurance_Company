@@ -45,9 +45,10 @@ namespace Medical_Insurance_Company.Frames
                 if (context.SaveChanges() != null)
                 {
                     MessageBox.Show("Вы зафиксировали новый страховой случай", "Запись сохранена", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.NavigationService.Navigate(new Uri("Frames/DocumentationInsuranceCases.xaml", UriKind.Relative));
+                    
                 }
             }
+            this.NavigationService.Navigate(new Uri("Frames/DocumentationInsuranceCases.xaml", UriKind.Relative));
         }
     }
 }

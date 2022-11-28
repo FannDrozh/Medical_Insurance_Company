@@ -24,9 +24,10 @@ namespace Medical_Insurance_Company.Frames
         public MedicalInstitutions()
         {
             InitializeComponent();
-            AppConnect.modelOdb = new MIC_BarashenkovEntities1();
-            ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Institutions.ToList();
+            ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Institutions.ToHashSet();
+            
         }
+                
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Frames/AddMedicalInstitutions.xaml", UriKind.Relative));
@@ -54,7 +55,6 @@ namespace Medical_Insurance_Company.Frames
             {
                 MIC_BarashenkovEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Institutions.ToList();
-                ListMedInst.ItemsSource = MIC_BarashenkovEntities1.GetContext().Medical_Services.ToList();
             }
         }
     }
