@@ -244,6 +244,8 @@
       <DependentUpon>MICModel.edmx</DependentUpon>
       <LastGenOutput>MICModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\Entre.png" />
+    <Resource Include="Image\reg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
