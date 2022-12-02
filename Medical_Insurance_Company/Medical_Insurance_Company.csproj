@@ -132,6 +132,9 @@
     <Compile Include="Frames\Persons.xaml.cs">
       <DependentUpon>Persons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\Registr.xaml.cs">
+      <DependentUpon>Registr.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\SumbitApp.xaml.cs">
       <DependentUpon>SumbitApp.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Frames\Persons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\Registr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
