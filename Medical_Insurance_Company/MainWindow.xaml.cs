@@ -28,7 +28,13 @@ namespace Medical_Insurance_Company
         {
             InitializeComponent();
             AppConnect.modelOdb = new MIC_BarashenkovEntities1();
-            MainMenu.Visibility = Visibility.Hidden;
+            StackPanel.Visibility = Visibility.Hidden;
+        }
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Authorization authorization = new Authorization();
+            authorization.Show();
+            Close();
         }
         //Окно подачи заявки
         private void Sumbit_Application_Click(object sender, RoutedEventArgs e)
@@ -65,8 +71,7 @@ namespace Medical_Insurance_Company
         {
             MyFrame.Content = new Registr();
         }
+
         
-
-
     }
 }

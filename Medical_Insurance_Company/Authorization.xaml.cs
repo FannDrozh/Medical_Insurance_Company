@@ -24,8 +24,6 @@ namespace Medical_Insurance_Company
         {
             InitializeComponent();
             AppConnect.modelOdb = new MIC_BarashenkovEntities1();
-            MainWindow mainWindow = new MainWindow();
-            
         }
 
         private void Authorization_Bt_Click(object sender, RoutedEventArgs e)
@@ -40,21 +38,38 @@ namespace Medical_Insurance_Company
                 }
                 else
                 {
+                    MainWindow mainWindow = new MainWindow();
                     switch (userObj.ID_Role)
                     {
                         case 1: MessageBox.Show("Здравствуйте, Администратор " + userObj.Login + "!","Уведомление",
                             MessageBoxButton.OK, MessageBoxImage.Information);
+                            mainWindow.StackPanel.Visibility = Visibility.Visible;
+                            mainWindow.Nameperson.Text = userObj.Login;
+                            mainWindow.Show();
                             break;
                         case 2: MessageBox.Show("Здравствуйте, Сотрудник " + userObj.Login + "!", "Уведомление",
                             MessageBoxButton.OK, MessageBoxImage.Information);
+                            mainWindow.StackPanel.Visibility = Visibility.Visible;
+                            mainWindow.Regist.Visibility = Visibility.Hidden;
+                            mainWindow.Nameperson.Text = userObj.Login;
+                            mainWindow.Show();
+                            break;
+                        case 3:
+                            MessageBox.Show("Здравствуйте, Страхующийся " + userObj.Login + "!", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                            mainWindow.StackPanel.Visibility = Visibility.Visible;
+                            mainWindow.Regist.Visibility = Visibility.Hidden;
+                            mainWindow.Doc_Ins_Cas.Visibility = Visibility.Hidden;
+                            mainWindow.Add_Med_Center.Visibility = Visibility.Hidden;
+                            mainWindow.Insured_People.Visibility = Visibility.Hidden;
+                            mainWindow.Insurence_Cases.Visibility = Visibility.Hidden;
+                            mainWindow.Nameperson.Text = userObj.Login;
+                            mainWindow.Show();
                             break;
                         default: MessageBox.Show("Данные не найдены!", "Уведомление",  
                             MessageBoxButton.OK, MessageBoxImage.Warning);
                             break;
                     }
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Nameperson.Text = userObj.Login;
-                    mainWindow.Show();
                     Close();
                 }
             }

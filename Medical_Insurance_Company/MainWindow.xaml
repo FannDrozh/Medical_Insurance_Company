@@ -30,6 +30,8 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
+        <Image Source="/Image/Entre.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
 
         <Menu x:Name="MainMenu1" 
                   RenderTransformOrigin="0.509,0.469" 
